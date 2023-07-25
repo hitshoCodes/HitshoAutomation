@@ -396,7 +396,7 @@ async def on_ready():
 @is_owner()
 async def prefix(ctx, new_prefix: str):
     bot.command_prefix = new_prefix
-    await bot.change_presence(activity=Game(name=f"{new_prefix}info"))
+    await bot.change_presence(activity=Game(name=f"HitshoAutomation, Prefix: {new_prefix}"))
     embed = discord.Embed(
         title="Prefix Update",
         description=f"```Successfully changed the command prefix to: {new_prefix}```\n \nNote that for a better user experience the prefix dosen't save, so if you close the sniper the prefix will go back to !",
