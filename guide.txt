@@ -1,0 +1,29 @@
+Step 1: Install Python
+Make sure you have the latest version of Python installed on your computer. You can download it from the official Python website: https://www.python.org/downloads/. Follow the installation instructions for your operating system.
+
+Step 2: Install Dependencies
+Open Command Prompt (Windows) or Terminal (macOS/Linux) and run the following command:
+
+pip install psutil robloxapi pyautogui pillow
+
+This command will install the required dependencies for HitshoAutomation to work properly.
+
+Step 3: Download HitshoAutomation
+Download the HitshoAutomation extension from the provided source. You can find the source on GitHub or any other designated platform.
+
+Step 4: Move HitshoAutomation
+After downloading HitshoAutomation, locate the downloaded folder. Now, drag the "HitshoAutomation" program into your Mewt Sniper folder. This step will ensure that the extension is in the right location for Mewt Sniper to recognize it.
+
+Step 5: Launch Mewt Sniper
+Open HitshoAutomation on your computer. With the HitshoAutomation extension properly placed in the Mewt Sniper folder, it will automatically be detected and enabled.
+
+Step 6: Enjoy the New Features
+Once you have Mewt Sniper up and running with HitshoAutomation, you can access the additional commands and features provided by the extension. Explore the various commands and functionalities to enhance your Mewt Sniper experience.
+
+Step 7: Automatic Notifications for Updates
+HitshoAutomation is designed to keep you informed about newer versions automatically. Whenever a new version is released, the extension will notify you with details on the new features and improvements. This way, you'll never miss out on the latest enhancements.
+
+Step 8: Check for Updates
+Although HitshoAutomation provides automatic notifications, it's always a good practice to check the official repository or platform where you downloaded it for any updates or announcements. Regularly updating the extension will ensure that you have access to the latest features and improvements.
+
+And that's it! You've successfully set up and started using HitshoAutomation with Mewt Sniper. Enjoy the new commands and functionalities while staying up-to-date with the latest versions. If you encounter any issues or have any questions, don't hesitate to seek help from the community or the original creator of the extension. Happy sniping!
