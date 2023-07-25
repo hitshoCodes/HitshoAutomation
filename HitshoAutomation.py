@@ -37,7 +37,7 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
-scriptVersion = 2
+scriptVersion = "1.3.0"
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -155,14 +155,14 @@ class MyBot(commands.AutoShardedBot):
             await asyncio.sleep(5)
 
 
-bot = MyBot(command_prefix='?', intents=intents)
+bot = MyBot(command_prefix='!', intents=intents)
 bot._last_socket_response = time.time()
 
 #Functions
 def bot_login(token, ready_event):
     intents = discord.Intents.default()
     intents.message_content = True  
-    bot = commands.Bot(command_prefix="?",
+    bot = commands.Bot(command_prefix="!",
                        intents=intents)
 
 def is_owner(): 
@@ -355,7 +355,7 @@ async def on_ready():
     os.system("cls" if os.name == "nt" else "clear")
 
     print("HitshoAutomation is now running in the background!")
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"HitshoAutomation, Prefix: {bot.command_prefix}"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"HitshoAutomation, {bot.command_prefix}info"))
     print(f"Logged in as bot: {bot.user.name}")
 
     cookies = settings["AUTHENTICATION"]["COOKIES"]
@@ -392,6 +392,7 @@ async def on_ready():
 #Commands:
 
 #prefix command
+"""
 @bot.command()
 @is_owner()
 async def prefix(ctx, new_prefix: str):
@@ -403,6 +404,7 @@ async def prefix(ctx, new_prefix: str):
         color=discord.Color.from_rgb(63, 40, 252)
     )
     await ctx.send(embed=embed)
+"""
 
 #ss
 @bot.command()
@@ -642,7 +644,7 @@ async def info(ctx):
         title="HitshoAutomation Commands:",
         color=discord.Color.from_rgb(63, 40, 252)
     )
-    embed.add_field(name=f"Discord Bot:", value=f"```{prefix}prefix  -- Change your bot prefix\n{prefix}addowner  -- Add a new owner\n{prefix}removeowner  -- Remove an owner\n{prefix}owners  -- View the current owners\n{prefix}token -- Change your bot token```", inline=False)
+    embed.add_field(name=f"Discord Bot:", value=f"```{prefix}addowner  -- Add a new owner\n{prefix}removeowner  -- Remove an owner\n{prefix}owners  -- View the current owners\n{prefix}token -- Change your bot token```", inline=False)
     embed.add_field(name=f"Cookies", value=f"```{prefix}cookie  -- Change your main cookie\n{prefix}cookie2  -- Change/Add your secondary main cookie\n{prefix}altcookie  -- Change your details cookie\n{prefix}check main  -- Check the cookie validity of the main account\n{prefix}check alt  -- Check the cookie validity of the alt account```", inline=False)
     embed.add_field(
         name=f"Mewt Sniper:",
@@ -659,9 +661,31 @@ async def info(ctx):
         value=f"```{prefix}legacy_on  -- Enable Legacy Watcher on Mewt Sniper\n{prefix}legacy_off  -- Disable Legacy Watcher on Mewt Sniper\n{prefix}watch_legacy  -- Watch only this one ID. IDS CANNOT BE REVERTED AFTER COMMAND RAN!\n{prefix}add_legacy  -- Add an ID to your legacy watcher \n{prefix}link_legacy  -- Watch only this one ID from a link. [LINK SHOULD NOT HAVE A SLASH AT THE END OR IN THE ITEM'S NAME, IDS CANNOT BE REVERTED AFTER COMMAND RAN!]  ```",
         inline=False,
     )
-    embed.add_field(name=f"Utilities", value=f"```{prefix}more  -- Look at some general information\n{prefix}ping  -- Check the bot response time\n{prefix}screenshot/ss -- Screenshot your screen!```", inline=False)   
-    embed.set_footer(text="Made by hitho_!")
+    embed.add_field(name=f"Utilities", value=f"```{prefix}more  -- Look at some general information\n{prefix}ping  -- Check the bot response time\n{prefix}screenshot/ss -- Screenshot your screen!\n{prefix}version -- Shows your current version!\n{prefix}update -- Updates to the newest version! (Recoding soon)```", inline=False)   
+    embed.set_footer(text="Made by hitsho_!")
     await ctx.author.send(embed=embed)
+
+#version command
+@bot.command()
+@is_owner()
+async def version(ctx):
+        embed = discord.Embed(
+            title="Version",
+            description=f"```Your current version is v{scriptVersion}```",
+            color=discord.Color.from_rgb(63, 40, 252)
+        )
+        await ctx.send(embed=embed)
+
+#update command
+@bot.command()
+@is_owner()
+async def update(ctx):
+        embed = discord.Embed(
+            title="Newest Version",
+            description=f"```https://github.com/hitshoCodes/HitshoAutomation/ ```",
+            color=discord.Color.from_rgb(63, 40, 252)
+        )
+        await ctx.send(embed=embed)
 
 #remove all command
 @bot.command()
