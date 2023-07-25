@@ -37,7 +37,7 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
-scriptVersion = 5
+scriptVersion = 2
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -162,7 +162,7 @@ bot._last_socket_response = time.time()
 def bot_login(token, ready_event):
     intents = discord.Intents.default()
     intents.message_content = True  
-    bot = commands.Bot(command_prefix="!",
+    bot = commands.Bot(command_prefix="?",
                        intents=intents)
 
 def is_owner(): 
