@@ -37,7 +37,7 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
-scriptVersion = "1.3.0"
+scriptVersion = 3
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -671,7 +671,7 @@ async def info(ctx):
 async def version(ctx):
         embed = discord.Embed(
             title="Version",
-            description=f"```Your current version is v{scriptVersion}```",
+            description=f"```Your current version is v1.{scriptVersion}.0```",
             color=discord.Color.from_rgb(63, 40, 252)
         )
         await ctx.send(embed=embed)
