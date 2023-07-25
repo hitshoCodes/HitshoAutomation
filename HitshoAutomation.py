@@ -81,7 +81,7 @@ def versionChecker():
                     "embeds": [
                         {
                             "title": "New version!",
-                            "description": f" ```Detected new update in https://github.com/hitshoCodes/HitshoAutomation/tree/main ```",
+                            "description": f" ```Detected new update in https://github.com/hitshoCodes/HitshoAutomation/ ```",
                             "color": 4139260,
                             "footer": {
                                 "text": "The current version will still work, the newest version is recommended."
