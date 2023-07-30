@@ -53,7 +53,7 @@ def update_script(url, file_path):
     except requests.exceptions.RequestException:
         return False
 
-scriptVersion = 5
+scriptVersion = 4
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -702,10 +702,8 @@ async def update(ctx):
 
     if update_script(url, file_path):
         await ctx.send("Code has been updated. Restarting...")
-        # Register the function to be called on normal exit
-        atexit.register(restart_bot)
         # Terminate the bot process
-        os._exit(0)
+        sys.exit()
     else:
         await ctx.send("Failed to update. Please try again later.")
         
