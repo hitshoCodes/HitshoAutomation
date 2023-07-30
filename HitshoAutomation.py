@@ -702,10 +702,12 @@ async def update(ctx):
 
     if update_script(url, file_path):
         await ctx.send("Code has been updated. Restarting...")
+        # Get the current process ID (PID)
+        current_pid = os.getpid()
         # Restart the bot
         subprocess.Popen(["python", "HitshoAutomation.py"])
         # Terminate the current bot process
-        os._exit(0)
+        os.kill(current_pid, signal.SIGTERM)
     else:
         await ctx.send("Failed to update. Please try again later.")
 
