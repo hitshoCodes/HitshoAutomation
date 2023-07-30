@@ -645,25 +645,25 @@ async def info(ctx):
         title="HitshoAutomation Commands:",
         color=discord.Color.from_rgb(88, 101, 242)
     )
-    embed.add_field(name=f"Discord Bot:", value=f"```{prefix}addowner  -- Add a new owner\n{prefix}removeowner  -- Remove an owner\n{prefix}owners  -- View the current owners\n{prefix}token -- Change your bot token```", inline=False)
-    embed.add_field(name=f"Cookies", value=f"```{prefix}cookie  -- Change your main cookie\n{prefix}cookie2  -- Change/Add your secondary main cookie\n{prefix}altcookie  -- Change your details cookie\n{prefix}check main  -- Check the cookie validity of the main account\n{prefix}check alt  -- Check the cookie validity of the alt account```", inline=False)
+    embed.add_field(name=f"Discord Bot:", value=f"```{prefix}addowner | Add a new owner\n{prefix}removeowner | Remove an owner\n{prefix}owners | View the current owners\n{prefix}token | Change your bot token```", inline=False)
+    embed.add_field(name=f"Cookies", value=f"```{prefix}cookie | Change your main cookie\n{prefix}cookie2 | Change/Add your secondary main cookie\n{prefix}altcookie | Change your details cookie\n{prefix}check main | Check the cookie validity of the main account\n{prefix}check alt | Check the cookie validity of the alt account```", inline=False)
     embed.add_field(
-        name=f"Mewt Sniper:",
-        value=f"```{prefix}add_link  -- Add an item ID from its link [LINK SHOULD NOT HAVE A SLASH AT THE END OR IN THE ITEM'S NAME]\n{prefix}webhook  -- Change your webhook\n{prefix}speed  -- Change your scan speed\n{prefix}onlyfree on  -- Only snipe free limiteds\n{prefix}onlyfree off  -- Snipe paid limiteds too\n!add  -- Add an item ID to the searcher\n!remove -- Remove an item from the searcher\n!watching -- Shows the list of items you are watching\n!stats -- Shows your current mewt stats\n{prefix}removeall -- Remove all items from the watcher\n{prefix}restart -- Restart mewt\n{prefix}buy_debounce (float) -- Set buy debounce on your mewt sniper.\n{prefix}autorestart (minutes) -- Autorestart mewt every tot. minutes\n{prefix}autorestart off -- Disable autorestarter\n{prefix}autorestart -- View the autorestart status ```",
+        name=f"Classic Commands:",
+        value=f"```{prefix}add_link | Add an item ID from its link [LINK SHOULD NOT HAVE A SLASH AT THE END OR IN THE ITEM'S NAME]\n{prefix}webhook | Change your webhook\n{prefix}speed | Change your scan speed\n{prefix}onlyfree on | Only snipe free limiteds\n{prefix}onlyfree off | Snipe paid limiteds too\n!add | Add an item ID to the searcher\n!remove | Remove an item from the searcher\n!watching | Shows the list of items you are watching\n!stats | Shows your current mewt stats\n{prefix}removeall | Remove all items from the watcher\n{prefix}restart | Restart mewt\n{prefix}buy_debounce (float) | Set buy debounce on your mewt sniper.\n{prefix}autorestart (minutes) | Autorestart mewt every tot. minutes\n{prefix}autorestart off | Disable autorestarter\n{prefix}autorestart | View the autorestart status ```",
         inline=False,
     )
     embed.add_field(
-        name=f"Mewt Sniper (2nd Part):",
-        value=f"```{prefix}autosearch on -- Enable autosearch\n{prefix}autosearch off -- Disable autosearch\n{prefix}viewWatching -- View all data of the items inside your watchlist.\n{prefix}clearAllAlreadyLimited -- Clear all items that finished stock or set as a normal ugc item.\n{prefix}addwl -- Add a whitelisted creator\n{prefix}removewl  -- Remove a whitelisted creator\n{prefix}whitelist -- View the whitelisted creators\n{prefix}paid_on -- Set the paid autosearch on\n{prefix}paid_off -- Set the autosearch paid off\n{prefix}maxstock -- Set the max stock for the paid autosearch\n{prefix}maxprice -- Set the max price for the paid autosearch ```",
+        name=f"Advanced Commands:",
+        value=f"```{prefix}autosearch on | Enable autosearch\n{prefix}autosearch off | Disable autosearch\n{prefix}viewWatching | View all data of the items inside your watchlist.\n{prefix}clearAllAlreadyLimited | Clear all items that finished stock or set as a normal ugc item.\n{prefix}addwl | Add a whitelisted creator\n{prefix}removewl | Remove a whitelisted creator\n{prefix}whitelist | View the whitelisted creators\n{prefix}paid_on | Set the paid autosearch on\n{prefix}paid_off | Set the autosearch paid off\n{prefix}maxstock | Set the max stock for the paid autosearch\n{prefix}maxprice | Set the max price for the paid autosearch ```",
         inline=False,
     )
     embed.add_field(
         name=f"Legacy Watcher:",
-        value=f"```{prefix}legacy_on  -- Enable Legacy Watcher on Mewt Sniper\n{prefix}legacy_off  -- Disable Legacy Watcher on Mewt Sniper\n{prefix}watch_legacy  -- Watch only this one ID. IDS CANNOT BE REVERTED AFTER COMMAND RAN!\n{prefix}add_legacy  -- Add an ID to your legacy watcher \n{prefix}link_legacy  -- Watch only this one ID from a link. [LINK SHOULD NOT HAVE A SLASH AT THE END OR IN THE ITEM'S NAME, IDS CANNOT BE REVERTED AFTER COMMAND RAN!]  ```",
+        value=f"```{prefix}legacy_on | Enable Legacy Watcher on Mewt Sniper\n{prefix}legacy_off | Disable Legacy Watcher on Mewt Sniper\n{prefix}watch_legacy | Watch only this one ID. IDS CANNOT BE REVERTED AFTER COMMAND RAN!\n{prefix}add_legacy | Add an ID to your legacy watcher \n{prefix}link_legacy | Watch only this one ID from a link. [LINK SHOULD NOT HAVE A SLASH AT THE END OR IN THE ITEM'S NAME, IDS CANNOT BE REVERTED AFTER COMMAND RAN!]  ```",
         inline=False,
     )
-    embed.add_field(name=f"Utilities", value=f"```{prefix}more  -- Look at some general information\n{prefix}ping  -- Check the bot response time\n{prefix}screenshot/ss -- Screenshot your screen!\n{prefix}version -- Shows your current version!\n{prefix}update -- Updates to the newest version! (Recoding soon)```", inline=False)   
-    embed.set_footer(text="Made by hitsho_!")
+    embed.add_field(name=f"Utilities", value=f"```{prefix}more | Look at some general information\n{prefix}ping | Check the bot response time\n{prefix}screenshot/ss | Screenshot your screen!\n{prefix}version | Shows your current version!\n{prefix}update | Updates to the newest version! (Recoding soon)```", inline=False)   
+    embed.set_footer(text=f"HitshoAutomation v{scriptVersion}\nMade by hitsho_!")
     await ctx.author.send(embed=embed)
 
 #version command
