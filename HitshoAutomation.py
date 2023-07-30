@@ -82,7 +82,7 @@ def versionChecker():
                         {
                             "title": "New version!",
                             "description": f" ```Detected new update in https://github.com/hitshoCodes/HitshoAutomation/ ```",
-                            "color": 4139260,
+                            "color": 5783026,
                             "footer": {
                                 "text": "The current version will still work, however, your version may have some issues, the newest version is recommended."
                             }
@@ -124,7 +124,6 @@ ROBLOX_API_URL = "https://users.roblox.com/v1/users/authenticated"
 webhook_url = settings['MISC']['WEBHOOK']['URL']
 autorestart_notify_enabled = True
 intents = discord.Intents.default()
-intents.message_content = True    
 intents.messages = True
 autorestart_task = None
 autorestart_minutes = None
@@ -133,6 +132,7 @@ start_time = None
 print_cache = {}
 discord_ids = settings['MISC']['DISCORD']['AUTHORIZED_IDS'][0]
 discord_id = discord_ids
+
 
 #Class
 class MyBot(commands.AutoShardedBot):
@@ -285,7 +285,7 @@ async def autorestart_task_fn(minutes, ctx):
             embed = Embed(
                 title="Restart Success!",
                 description="Mewt has been restarted, on-sale limiteds were removed! Items Removed: \n" + listRemoved, 
-                color=0xFFB6C1
+                color=0x5865F2
             )
             await ctx.send(embed=embed)
         restart_main_py()
@@ -356,7 +356,7 @@ async def on_ready():
     os.system("cls" if os.name == "nt" else "clear")
 
     print("HitshoAutomation is now running in the background!")
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"HitshoAutomation, {bot.command_prefix}info"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name="HitshoAutomation, !info"))
     print(f"Logged in as bot: {bot.user.name}")
 
     cookies = settings["AUTHENTICATION"]["COOKIES"]
@@ -402,7 +402,7 @@ async def prefix(ctx, new_prefix: str):
     embed = discord.Embed(
         title="Prefix Update",
         description=f"```Successfully changed the command prefix to: {new_prefix}```\n \nNote that for a better user experience the prefix dosen't save, so if you close the sniper the prefix will go back to !",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     await ctx.send(embed=embed)
 """
@@ -493,7 +493,7 @@ async def webhook(ctx, webhook_url: str):
     embed = discord.Embed(
         title="Success!",
         description=" ``` This webhook has been succesfully set and will be used for the next notifications! ```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     
@@ -550,7 +550,7 @@ async def onlyfree(ctx, status: str):
     with open('settings.json', 'w') as f:
         json.dump(settings, f, indent=4)
 
-    embed = Embed(title='Success!', description=f'```{description}```', color=Colour.from_rgb(63, 40, 252))
+    embed = Embed(title='Success!', description=f'```{description}```', color=Colour.from_rgb(88, 101, 242))
     await ctx.send(embed=embed)
 
     if await restart_main_py():
@@ -587,7 +587,7 @@ async def speed(ctx, new_speed: str):
     with open('settings.json', 'w') as f:
         json.dump(settings, f, indent=4)
 
-    embed = Embed(title='Success!', description=f'```New scan speed: {new_speed_str}```', color=Colour.from_rgb(63, 40, 252))
+    embed = Embed(title='Success!', description=f'```New scan speed: {new_speed_str}```', color=Colour.from_rgb(88, 101, 242))
     await ctx.send(embed=embed)
 
     if await restart_main_py():
@@ -627,7 +627,7 @@ async def buy_debounce(ctx, new_debounce: str):
     embed = Embed(
         title="Success!",
         description=f"```New buy debounce: {new_debounce_str}```",
-        color=Colour.from_rgb(63, 40, 252),
+        color=Colour.from_rgb(88, 101, 242),
     )
     await ctx.send(embed=embed)
 
@@ -643,7 +643,7 @@ async def info(ctx):
     prefix = bot.command_prefix
     embed = discord.Embed(
         title="HitshoAutomation Commands:",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     embed.add_field(name=f"Discord Bot:", value=f"```{prefix}addowner  -- Add a new owner\n{prefix}removeowner  -- Remove an owner\n{prefix}owners  -- View the current owners\n{prefix}token -- Change your bot token```", inline=False)
     embed.add_field(name=f"Cookies", value=f"```{prefix}cookie  -- Change your main cookie\n{prefix}cookie2  -- Change/Add your secondary main cookie\n{prefix}altcookie  -- Change your details cookie\n{prefix}check main  -- Check the cookie validity of the main account\n{prefix}check alt  -- Check the cookie validity of the alt account```", inline=False)
@@ -671,9 +671,9 @@ async def info(ctx):
 @is_owner()
 async def version(ctx):
         embed = discord.Embed(
-            title="Version",
-            description=f"```Your current version is v{scriptVersion}```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            title="HitshoAutomation",
+            description=f"Version: {scriptVersion}\nOS: {platform.system()}",
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
 
@@ -684,7 +684,7 @@ async def update(ctx):
         embed = discord.Embed(
             title="Newest Version",
             description=f"```https://github.com/hitshoCodes/HitshoAutomation/ ```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
 
@@ -696,7 +696,7 @@ async def removeall(ctx):
     settings["MISC"]["WATCHER"]["ITEMS"] = []
     update_settings(settings)
 
-    embed = Embed(title="Items Removed", description="All items have been removed.", color=discord.Color.from_rgb(63, 40, 252))
+    embed = Embed(title="Items Removed", description="All items have been removed.", color=discord.Color.from_rgb(88, 101, 242))
     await ctx.send(embed=embed)
 
     if await restart_main_py():
@@ -723,14 +723,14 @@ async def addowner(ctx, user_id: int):
         embed = discord.Embed(
             title="Owner Added",
             description=f"```User ID {user_id} has been added as an owner.```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
             title="Error",
             description=f"```User ID {user_id} is already an owner.```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
 #remove owner
@@ -748,14 +748,14 @@ async def removeowner(ctx, user_id: int):
         embed = discord.Embed(
             title="Owner Removed",
             description=f"```User ID {user_id} has been removed as an owner.```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
             title="Error",
             description=f"```User ID {user_id} is not an owner.```",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
         await ctx.send(embed=embed)
 
@@ -770,7 +770,7 @@ async def owners(ctx):
     # Create an embed with the specified color
     embed = discord.Embed(
         title="Current Owners",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     # Add a field for the owners
@@ -786,7 +786,7 @@ async def owners(ctx):
 async def restart(ctx):
     try:
         restart_main_py()
-        embed = Embed(title="Success!", description="Successfully restarted the bot.", color=Colour.from_rgb(63, 40, 252))
+        embed = Embed(title="Success!", description="Successfully restarted the bot.", color=Colour.from_rgb(88, 101, 242))
         await ctx.send(embed=embed)
     except Exception as e:
         embed = Embed(title="Error", description="An error occurred while trying to restart the bot: {}".format(str(e)), color=Colour.red())
@@ -823,7 +823,7 @@ async def more(ctx):
         runtime = "Unknown"
 
 
-    embed = discord.Embed(title=f"Stats", color=discord.Color.from_rgb(63, 40, 252))
+    embed = discord.Embed(title=f"Stats", color=discord.Color.from_rgb(88, 101, 242))
     embed.add_field(name="Prefix:", value=prefix, inline=False)
     embed.add_field(name="Roblox main:", value=main_username if main_cookie_valid else "Invalid cookie", inline=False)
     embed.add_field(name="Roblox alt:", value=details_username if details_cookie_valid else "Invalid cookie", inline=False)
@@ -872,7 +872,7 @@ async def cookie(ctx, new_cookie: str):
         embed = discord.Embed(
             title="MAIN Cookie Update",
             description=f" ```The MAIN cookie was valid for the username: {username}```\n  \n **If the bot doesn't react to !stats it means that either your main/alt cookie was invalid. In this case update them.** ",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
 
        
@@ -937,7 +937,7 @@ async def cookie2(ctx, new_cookie: str):
         embed = discord.Embed(
             title="SECONDARY Cookie Update",
             description=f" ```The SECONDARY cookie was valid for the username: {username}```\n  \n **If the bot doesn't react to !stats it means that either your main/alt cookie was invalid. In this case update them.** ",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
 
        
@@ -999,7 +999,7 @@ async def altcookie(ctx, new_cookie: str):
         embed = discord.Embed(
             title="ALT Cookie Update",
             description=f" ```The ALT cookie was valid for the username: {username} ```\n  \n **If the bot dosen't react to !stats it means that either your main/alt cookie was invalid. In this case update them.** '",
-            color=discord.Color.from_rgb(63, 40, 252)
+            color=discord.Color.from_rgb(88, 101, 242)
         )
 
         
@@ -1045,7 +1045,7 @@ async def token(ctx, new_token: str):
     embed = discord.Embed(
         title="Token Update",
         description=" ``` Successfully changed the discord bot TOKEN, make sure that you have invited the new bot to the server. ```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     await ctx.send(embed=embed)
@@ -1078,7 +1078,7 @@ async def autosearch(ctx, status: str):
     embed = discord.Embed(
         title="Autosearch Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     await ctx.send(embed=embed)
@@ -1108,7 +1108,7 @@ async def addwl(ctx, creator: str):
     embed = discord.Embed(
         title="Whitelist Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     await ctx.send(embed=embed)
@@ -1137,7 +1137,7 @@ async def removewl(ctx, creator: str):
     embed = discord.Embed(
         title="Whitelist Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     await ctx.send(embed=embed)
@@ -1162,7 +1162,7 @@ async def whitelist(ctx):
     embed = discord.Embed(
         title="Whitelist Status",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
 
     await ctx.send(embed=embed)
@@ -1185,12 +1185,12 @@ async def autorestart(ctx, minutes: Union[int, str] = None):
 
     if minutes is None:
         if autorestart_task is not None and not autorestart_task.cancelled():
-            embed = Embed(title="Autorestart Status", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Status", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart is currently enabled.")
             embed.add_field(name="Minutes", value=f"Restarting every {autorestart_minutes} minutes.")
             await ctx.send(embed=embed)
         else:
-            embed = Embed(title="Autorestart Status", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Status", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart is currently disabled.")
             await ctx.send(embed=embed)
     elif isinstance(minutes, str) and minutes.lower() == "off":
@@ -1198,11 +1198,11 @@ async def autorestart(ctx, minutes: Union[int, str] = None):
             autorestart_task.cancel()
             autorestart_task = None
             autorestart_minutes = None
-            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart has been disabled.")
             await ctx.send(embed=embed)
         else:
-            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart is already disabled.")
             await ctx.send(embed=embed)
     elif isinstance(minutes, int) and minutes == 0:
@@ -1210,11 +1210,11 @@ async def autorestart(ctx, minutes: Union[int, str] = None):
             autorestart_task.cancel()
             autorestart_task = None
             autorestart_minutes = None
-            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart has been disabled.")
             await ctx.send(embed=embed)
         else:
-            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Autorestart Disabled", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Status", value="Autorestart is already disabled.")
             await ctx.send(embed=embed)
     else:
@@ -1234,7 +1234,7 @@ async def autorestart(ctx, minutes: Union[int, str] = None):
         autorestart_task = bot.loop.create_task(autorestart_task_fn(minutes, ctx))
         autorestart_minutes = minutes
 
-        embed = Embed(title="Autorestart Enabled", color=Colour.from_rgb(63, 40, 252))
+        embed = Embed(title="Autorestart Enabled", color=Colour.from_rgb(88, 101, 242))
         embed.add_field(name="Status", value="Autorestart has been enabled.")
         embed.add_field(name="Minutes", value=f"Restarting every {minutes} minutes.")
         embed.add_field(name="Notification", value=success_msg)
@@ -1256,7 +1256,7 @@ async def legacy_on(ctx):
     embed = discord.Embed(
         title="USE_LEGACY_WATCHER Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
     )
     restart_main_py()
 
@@ -1280,7 +1280,7 @@ async def watch_legacy(ctx, id: int):
     embed = discord.Embed(
         title="LEGACY_WATCHER Update",
         description=f"```All items that were previously added on the JSON were removed and replaced with following id. If legacy watcher was off, it has been enabled automatically.```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
     )
 
     await ctx.send(embed=embed)
@@ -1294,7 +1294,7 @@ async def link_legacy(ctx, *, link: str):
         embed = discord.Embed(
         title="Error",
         description=f"```Link format is invalid. Check if link format matches the following: https://www.roblox.com/catalog/12345678901/Item-Name```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
         )     
     else:
         print("Adding legacy id")
@@ -1312,7 +1312,7 @@ async def link_legacy(ctx, *, link: str):
         embed = discord.Embed(
         title="LEGACY_WATCHER Update",
         description=f"```All items that were previously added on the JSON were removed and replaced with ID {id_from_link}. If legacy watcher was off, it has been enabled automatically.```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
         )   
 
     await ctx.send(embed=embed)
@@ -1335,7 +1335,7 @@ async def add_legacy(ctx, id: int):
     embed = discord.Embed(
         title="LEGACY_WATCHER Update",
         description=f"```Item has been added with following id. If legacy watcher was off, it has been enabled automatically.```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
     )
 
     await ctx.send(embed=embed)
@@ -1349,7 +1349,7 @@ async def add_link(ctx, *, link: str):
         embed = discord.Embed(
         title=f"Error",
         description=f"```Link format is invalid. Check if link format matches the following: https://www.roblox.com/catalog/12345678901/Item-Name```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
         ) 
     else:
         with open("settings.json", "r") as f:
@@ -1363,7 +1363,7 @@ async def add_link(ctx, *, link: str):
         restart_main_py()   
         embed = discord.Embed(
         title=f"Item ID {id_from_link} has been added.",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
         )
 
     await ctx.send(embed=embed)
@@ -1385,7 +1385,7 @@ async def legacy_off(ctx):
     embed = discord.Embed(
         title="USE_LEGACY_WATCHER Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252),
+        color=discord.Color.from_rgb(88, 101, 242),
     )
     restart_main_py()
 
@@ -1434,13 +1434,13 @@ async def clearAllAlreadyLimited(ctx):
                 embed = discord.Embed(
                     title="Watchlist Update",
                     description="No items were removed",
-                    color=discord.Color.from_rgb(63, 40, 252),
+                    color=discord.Color.from_rgb(88, 101, 242),
                 )
             else:
                 embed = discord.Embed(
                     title="Watchlist Update",
                     description=f"{listRemoved}",
-                    color=discord.Color.from_rgb(63, 40, 252),
+                    color=discord.Color.from_rgb(88, 101, 242),
                 )
                 with open("settings.json", "w") as f:
                     json.dump(settings, f, indent=4)
@@ -1493,7 +1493,7 @@ async def viewWatching(ctx):
                     embedToAdd =  discord.Embed(
                          title=item_data["name"],
                          url=f"https://www.roblox.com/catalog/{str(item_data['id'])}/",
-                         color=discord.Color.from_rgb(63, 40, 252),
+                         color=discord.Color.from_rgb(88, 101, 242),
                          description=f"Description: {item_data['description']} \nUnits Left: `{str(item_data['unitsAvailableForConsumption'])}/{str(item_data['totalQuantity'])}` \nPrice: `{str(item_data['price'])}` \nCreator: `{item_data['creatorName']}` \nID: {str(item_data['id'])}"
                     )
                     embedToAdd.set_thumbnail(url=get_thumbnail(str(item_data['id'])))
@@ -1502,7 +1502,7 @@ async def viewWatching(ctx):
                    embedToAdd =  discord.Embed(
                          title=item_data["name"],
                          url=f"https://www.roblox.com/catalog/{str(item_data['id'])}/",
-                         color=discord.Color.from_rgb(63, 40, 252),
+                         color=discord.Color.from_rgb(88, 101, 242),
                          description=f"Description: {item_data['description']} \nUnits Left: `Item detected not a limited.` \nPrice: `{str(item_data['price'])}` \nCreator: `{item_data['creatorName']}` \nID: {str(item_data['id'])}"
                     )
                    embedToAdd.set_thumbnail(url=get_thumbnail(str(item_data['id'])))
@@ -1511,7 +1511,7 @@ async def viewWatching(ctx):
                    embedToAdd =  discord.Embed(
                          title=item_data["name"],
                          url=f"https://www.roblox.com/catalog/{str(item_data['id'])}/",
-                         color=discord.Color.from_rgb(63, 40, 252),
+                         color=discord.Color.from_rgb(88, 101, 242),
                          description=f"Description: {item_data['description']} \nPrice: `Not for sale` \nCreator: `{item_data['creatorName']}` \nID: {str(item_data['id'])}"
                     )
                    embedToAdd.set_thumbnail(url=get_thumbnail(str(item_data['id'])))
@@ -1520,7 +1520,7 @@ async def viewWatching(ctx):
                 listOfEmbeds.append(discord.Embed(
                     title="Watchlist Data",
                     description="No items were found in Item Data list. Please update your watchlist if you have nothing in your watchlist.",
-                    color=discord.Color.from_rgb(63, 40, 252),
+                    color=discord.Color.from_rgb(88, 101, 242),
                 ))
             await ctx.send(embeds=listOfEmbeds)
         else:
@@ -1551,7 +1551,7 @@ async def paid_on(ctx):
     embed = discord.Embed(
         title="BUY_PAID Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     restart_main_py()
 
@@ -1572,7 +1572,7 @@ async def paid_off(ctx):
     embed = discord.Embed(
         title="BUY_PAID Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     restart_main_py()
 
@@ -1593,7 +1593,7 @@ async def maxprice(ctx, price: int):
     embed = discord.Embed(
         title="MAX_PRICE Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     restart_main_py()
 
@@ -1614,7 +1614,7 @@ async def maxstock(ctx, stock: int):
     embed = discord.Embed(
         title="MAX_STOCK Status Update",
         description=f"```{message}```",
-        color=discord.Color.from_rgb(63, 40, 252)
+        color=discord.Color.from_rgb(88, 101, 242)
     )
     restart_main_py()
 
@@ -1646,7 +1646,7 @@ async def check(ctx, cookie_type: str):
             avatar_data = avatar_response.json()
             avatar_url = avatar_data["data"][0]["imageUrl"]
 
-            embed = Embed(title="Cookie check result:", color=Colour.from_rgb(63, 40, 252))
+            embed = Embed(title="Cookie check result:", color=Colour.from_rgb(88, 101, 242))
             embed.add_field(name="Username", value=username)
             embed.add_field(name="Cookie type", value=cookie_type.title())
             embed.set_thumbnail(url=avatar_url)
