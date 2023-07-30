@@ -53,7 +53,7 @@ def update_script(url, file_path):
     except requests.exceptions.RequestException:
         return False
 
-scriptVersion = 5
+scriptVersion = 4
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
