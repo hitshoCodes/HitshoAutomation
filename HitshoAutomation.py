@@ -701,9 +701,7 @@ async def update(ctx):
     file_path = "HitshoAutomation.py"
 
     if update_script(url, file_path):
-        await ctx.send("Code has been updated. Restarting...")
-        # Terminate the bot process
-        restart_main_py()
+        await ctx.send("Code has been updated. Restart your HitshoAutomation to get the newst version...")
     else:
         await ctx.send("Failed to update. Please try again later.")
         
