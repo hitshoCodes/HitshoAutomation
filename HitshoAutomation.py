@@ -703,7 +703,7 @@ async def update(ctx):
     if update_script(url, file_path):
         await ctx.send("Code has been updated. Restarting...")
         # Terminate the bot process
-        sys.exit()
+        restart_main_py()
     else:
         await ctx.send("Failed to update. Please try again later.")
         
