@@ -436,12 +436,8 @@ async def on_ready():
         if not details_cookie_valid:
             await send_cookie_invalid_webhook("DETAILS_COOKIE", "altcookie")
 
-        # Wait for 5 minutes before checking again
-        await asyncio.sleep(300)
-
-
-
-
+        # Wait for 1 hour before checking again
+        await asyncio.sleep(3600)
 
 #Commands:
 
