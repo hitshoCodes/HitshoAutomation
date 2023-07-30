@@ -37,6 +37,22 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
+def update_script(url, file_path):
+    try:
+        # Fetch the content from the URL
+        response = requests.get(url)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Save the content to the local file
+            with open(file_path, 'w') as file:
+                file.write(response.text)
+            return True
+        else:
+            return False
+    except requests.exceptions.RequestException:
+        return False
+
 scriptVersion = 5
 def whichPythonCommand():
     LocalMachineOS = platform.system()
@@ -679,14 +695,19 @@ async def version(ctx):
 
 #update command
 @bot.command()
-@is_owner()
+@commands.is_owner()
 async def update(ctx):
-        embed = discord.Embed(
-            title="Newest Version",
-            description=f"```https://github.com/hitshoCodes/HitshoAutomation/ ```",
-            color=discord.Color.from_rgb(88, 101, 242)
-        )
-        await ctx.send(embed=embed)
+    url = "https://raw.githubusercontent.com/hitshoCodes/HitshoAutomation/main/HitshoAutomation.py"
+    file_path = "HitshoAutomation.py"
+
+    if update_script(url, file_path):
+        await ctx.send("Code has been updated. Restarting...")
+        # Restart the bot
+        subprocess.Popen(["python", "HitshoAutomation.py"])
+        # Terminate the current bot process
+        os._exit(0)
+    else:
+        await ctx.send("Failed to update. Please try again later.")
 
 #remove all command
 @bot.command()
