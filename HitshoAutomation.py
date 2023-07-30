@@ -53,7 +53,7 @@ def update_script(url, file_path):
     except requests.exceptions.RequestException:
         return False
 
-scriptVersion = 4
+scriptVersion = 5
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -120,6 +120,43 @@ def versionChecker():
             print(
                 "Failed to get a response from the version checker, please check your internet connection."
             )
+        time.sleep(60*10)
+
+def checkValue():
+    while True:
+        response = requests.get("https://pastebin.com/raw/SqjjYaHw")
+        if response:
+            if response.text.strip().lower() == 'true':
+                message_response = requests.get("https://pastebin.com/raw/Nw6FACFP")
+                if message_response:
+                    message = message_response.text
+
+                    # Read the settings.json file right before sending the embed
+                    with open('settings.json', 'r') as f:
+                        settings = json.load(f)
+                    authorized_ids = settings["MISC"]["DISCORD"]["AUTHORIZED_IDS"]
+                    pings = ""
+                    for random_idwoahh in authorized_ids:
+                        pings = pings + f"<@{random_idwoahh}> "
+                    webhook_url = settings["MISC"]["WEBHOOK"]["URL"]
+                    newJSONData = {
+                        "content": pings,
+                        "embeds": [
+                            {
+                                "title": "New Announcement!",
+                                "description": message,
+                                "color": 5783026,
+                                "footer": {
+
+                                }
+                            }
+                        ]
+                    }
+                    embed_webhook_response = requests.post(webhook_url, json=newJSONData)
+                    if embed_webhook_response.status_code != 204:
+                        print(f"Failed to send the embed to the webhook. HTTP status: {embed_webhook_response.status_code}")
+        else:
+            print("Failed to get response for value checker, please check your internet connection.")
         time.sleep(60*10)
 
 def get_thumbnail(item_id) -> str:
@@ -381,8 +418,8 @@ async def on_ready():
     versionCheck = threading.Thread(target=versionChecker)
     versionCheck.start()
 
-    # checkValueThread = threading.Thread(target=checkValue)
-    # checkValueThread.start()
+    checkValueThread = threading.Thread(target=checkValue)
+    checkValueThread.start()
 
     checks = 0
     while True:
