@@ -37,7 +37,7 @@ except ModuleNotFoundError:
         ask = input("Installation finished.")
         exit()
 
-scriptVersion = 4
+scriptVersion = 5
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
