@@ -328,10 +328,10 @@ async def autorestart_task_fn(minutes, ctx):
                     with open("settings.json", "w") as f:
                         json.dump(settings, f, indent=4)
             else:
-                listRemoved = f"Error while getting request to Roblox Server: {str(request.status_code)}"
+                listRemoved = f"Nothing to remove. If this is false, try again later!"
         except Exception as e:
             print("Error while updating watchlist:" + e)
-            listRemoved = "Error while updating watchlist"
+            listRemoved = "Error while updating watchlist!"
         ## Main
 
         if notify_on_restart:
@@ -1506,9 +1506,7 @@ async def clearAllAlreadyLimited(ctx):
     except Exception as e:
         embed = Embed(
             title="Error",
-            description="An error occurred while trying to update your watch list: {}".format(
-                str(e)
-            ),
+            description="Nothing to remove. If this is false, try again later!"
             color=Colour.red(),
         )
         await ctx.send(embed=embed)
