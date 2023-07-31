@@ -53,7 +53,7 @@ def update_script(url, file_path):
     except requests.exceptions.RequestException:
         return False
 
-scriptVersion = 5
+scriptVersion = 4
 def whichPythonCommand():
     LocalMachineOS = platform.system()
     if (
@@ -328,7 +328,7 @@ async def autorestart_task_fn(minutes, ctx):
                     with open("settings.json", "w") as f:
                         json.dump(settings, f, indent=4)
             else:
-                listRemoved = f"Nothing to remove. If this is false, try again later!"
+                listRemoved = f"Error while getting request to Roblox Server: {str(request.status_code)}"
         except Exception as e:
             print("Error while updating watchlist:" + e)
             listRemoved = "Error while updating watchlist!"
@@ -1506,7 +1506,9 @@ async def clearAllAlreadyLimited(ctx):
     except Exception as e:
         embed = Embed(
             title="Error",
-            description="Nothing to remove. If this is false, try again later!"
+            description="An error occurred while trying to update your watch list: {}".format(
+                str(e)
+            ),
             color=Colour.red(),
         )
         await ctx.send(embed=embed)
